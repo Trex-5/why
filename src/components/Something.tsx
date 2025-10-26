@@ -349,7 +349,7 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         id: 'dress-12',
         title: 'Dress 12',
         heading: 'White/Black 2',
-        content: ['Festronics 2']
+        content: ['Festronix 2']
       },
       {
         id: 'dress-13',
@@ -391,7 +391,7 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         id: 'dress-19',
         title: 'Dress 19',
         heading: 'lite pink/white shades',
-        content: ['SEM 5 - 2 time']
+        content: ['SEM 5 - 3 time']
       },
       {
         id: 'dress-20',
@@ -426,14 +426,14 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
       {
         id: 'dress-25',
         title: 'Dress 25',
-        heading: 'Red 1',
+        heading: 'Red/white shawl',
         content: ['SEM 1 BC exam']
       },
       {
         id: 'dress-26',
         title: 'Dress 26',
-        heading: 'Red 2',
-        content: ['2nd B-Day']
+        heading: 'Red/sandle',
+        content: ['2nd B-Day, Festronix 2']
       },
       {
         id: 'dress-27',
@@ -482,6 +482,24 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         title: 'Dress 34',
         heading: 'green sandle',
         content: ['No specific action, sometimes']
+      },
+      {
+        id: 'dress-35',
+        title: 'Dress 35',
+        heading: 'sandle/black',
+        content: ['My club inauguration, sometimes']
+      },
+      {
+        id: 'dress-36',
+        title: 'Dress 36',
+        heading: 'white/black/patterns',
+        content: ['Your club canvas, sometimes']
+      },
+      {
+        id: 'dress-37',
+        title: 'Dress 37',
+        heading: 'white/black small rectangle boxes',
+        content: ['project day, sometimes']
       },
       {
         id: 'dress',
