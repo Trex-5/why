@@ -167,7 +167,7 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         id: 'accidental-catch-4',
         title: 'Accidental Catch 4 - Red',
         heading: 'Afternoon Time',
-        content: ['your class went to Internship, birthday photos on road side']
+        content: ['your class went to Industrial Visit, birthday photos on road side']
       },
       {
         id: 'accidental-catch-5',
