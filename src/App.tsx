@@ -128,7 +128,8 @@ const boxContents: Record<number, { heading: string; subHead: string; content: s
       "Help: Students record - Shared by HOD",
       "Lead 2: Lead to Instagram",
       "Whatsapp Bio: It's just a spark",
-      "Bio2: Hope~11:11 (Funny moment - its changed when i creating this site 12/4/25)"
+      "Bio2: Hope~11:11 (Funny moment - its changed when i creating this site 12/4/25)",
+      "1st Call : Oct 24 / 13 sec"
     ]
   },
   3: {
