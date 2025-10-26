@@ -464,6 +464,12 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         title: 'Dress 31',
         heading: 'lite yellowish',
         content: ['Elective lab/SEM 5']
+      },
+      {
+        id: 'dress-32',
+        title: 'Dress 32',
+        heading: 'lite marron with white dots',
+        content: ['After Diwali 2']
       }
       
     ],
