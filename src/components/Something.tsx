@@ -475,7 +475,7 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         id: 'dress-33',
         title: 'Dress 33',
         heading: 'lite green white',
-        content: ['No specific action, sometimes']
+        content: ['TCS codevita day, after coimbatore event']
       },
       {
         id: 'dress-34',
