@@ -96,8 +96,7 @@ const themes: Record<Theme, ThemeConfig> = {
       'from-lime-500 to-lime-600',
       'from-green-600 to-emerald-600',
       'from-emerald-600 to-teal-600',
-      'from-green-400 to-emerald-500',
-      'from-teal-400 to-green-500'
+      'from-green-400 to-emerald-500'
     ],
     boxHoverColors: [
       'hover:from-green-600 hover:to-green-700',
@@ -106,8 +105,7 @@ const themes: Record<Theme, ThemeConfig> = {
       'hover:from-lime-600 hover:to-lime-700',
       'hover:from-green-700 hover:to-emerald-700',
       'hover:from-emerald-700 hover:to-teal-700',
-      'hover:from-green-500 hover:to-emerald-600',
-      'hover:from-teal-500 hover:to-green-600'
+      'hover:from-green-500 hover:to-emerald-600'
     ]
   }
 };
@@ -668,6 +666,22 @@ function App() {
             )}
 
             {viewingBox === 7 && (
+              <div className="mb-6">
+                <button
+                  onClick={() => {
+                    closeContentModal();
+                    setTimeout(() => {
+                      setCurrentPage('whatsapp');
+                    }, 100);
+                  }}
+                  className={`bg-gradient-to-r ${theme.buttonGradient} text-white py-3 px-6 rounded-lg font-semibold transition-all duration-200 shadow-lg mr-4 hover:shadow-xl hover:scale-105`}
+                >
+                  VIEW WHATSAPP
+                </button>
+              </div>
+            )}
+
+            {viewingBox === 8 && (
               <div className="mb-6">
                 <button
                   onClick={() => {
