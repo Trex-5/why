@@ -167,6 +167,13 @@ const boxContents: Record<number, { heading: string; subHead: string; content: s
     ]
   },
   7: {
+    heading: "Whatsapp",
+    subHead: "Oct 31 2025",
+    content: [
+      "First Whatsapp conversation milestone"
+    ]
+  },
+  8: {
     heading: "Something",
     subHead: "Explore more",
     content: [
@@ -226,7 +233,8 @@ function App() {
       4: '21-02',
       5: 'holy',
       6: 'idcs',
-      7: '6095'
+      7: '1111',
+      8: 'vehicle'
     };
     // Simulate loading for better UX
     setTimeout(() => {
@@ -318,7 +326,13 @@ function App() {
     },
     {
       id: 7,
-      title: 'Chapter 7: Something',
+      title: 'Chapter 7: Whatsapp',
+      date: 'Oct 31 2025',
+      hint: 'hope number'
+    },
+    {
+      id: 8,
+      title: 'Chapter 8: Something',
       date: '',
       hint: 'house number'
     }
@@ -695,9 +709,7 @@ function App() {
                   EXPLORE SOMETHING
                 </button>
               </div>
-            )}
 
-            <div className="flex justify-end">
               <button
                 onClick={closeContentModal}
                 className={`bg-gradient-to-r ${theme.buttonGradient} text-white py-3 px-8 rounded-lg font-semibold hover:${theme.buttonHoverGradient} transition-all duration-200 shadow-lg`}
