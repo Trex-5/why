@@ -4,6 +4,7 @@ import { Lock, Unlock, Key } from 'lucide-react';
 import InstaFuns from './components/InstaFuns';
 import SchoolFuns from './components/SchoolFuns';
 import Something from './components/Something';
+import WpFuns from './components/WpFuns';
 
 type Theme = 'blue' | 'pink' | 'green';
 
@@ -39,7 +40,8 @@ const themes: Record<Theme, ThemeConfig> = {
       'from-cyan-500 to-cyan-600',
       'from-blue-600 to-purple-600',
       'from-indigo-600 to-blue-600',
-      'from-blue-400 to-purple-500'
+      'from-blue-400 to-purple-500',
+      'from-rose-400 to-pink-500'
     ],
     boxHoverColors: [
       'hover:from-blue-600 hover:to-blue-700',
@@ -48,7 +50,8 @@ const themes: Record<Theme, ThemeConfig> = {
       'hover:from-cyan-600 hover:to-cyan-700',
       'hover:from-blue-700 hover:to-purple-700',
       'hover:from-indigo-700 hover:to-blue-700',
-      'hover:from-blue-500 hover:to-purple-600'
+      'hover:from-blue-500 hover:to-purple-600',
+      'hover:from-rose-500 hover:to-pink-600'
     ]
   },
   pink: {
@@ -68,7 +71,8 @@ const themes: Record<Theme, ThemeConfig> = {
       'from-pink-600 to-rose-600',
       'from-rose-600 to-pink-600',
       'from-fuchsia-600 to-pink-600',
-      'from-pink-400 to-rose-500'
+      'from-pink-400 to-rose-500',
+      'from-rose-300 to-fuchsia-400'
     ],
     boxHoverColors: [
       'hover:from-pink-600 hover:to-pink-700',
@@ -77,7 +81,8 @@ const themes: Record<Theme, ThemeConfig> = {
       'hover:from-pink-700 hover:to-rose-700',
       'hover:from-rose-700 hover:to-pink-700',
       'hover:from-fuchsia-700 hover:to-pink-700',
-      'hover:from-pink-500 hover:to-rose-600'
+      'hover:from-pink-500 hover:to-rose-600',
+      'hover:from-rose-400 hover:to-fuchsia-500'
     ]
   },
   green: {
@@ -97,7 +102,8 @@ const themes: Record<Theme, ThemeConfig> = {
       'from-lime-500 to-lime-600',
       'from-green-600 to-emerald-600',
       'from-emerald-600 to-teal-600',
-      'from-green-400 to-emerald-500'
+      'from-green-400 to-emerald-500',
+      'from-lime-300 to-emerald-400'
     ],
     boxHoverColors: [
       'hover:from-green-600 hover:to-green-700',
@@ -106,7 +112,8 @@ const themes: Record<Theme, ThemeConfig> = {
       'hover:from-lime-600 hover:to-lime-700',
       'hover:from-green-700 hover:to-emerald-700',
       'hover:from-emerald-700 hover:to-teal-700',
-      'hover:from-green-500 hover:to-emerald-600'
+      'hover:from-green-500 hover:to-emerald-600',
+      'hover:from-lime-400 hover:to-emerald-500'
     ]
   }
 };
@@ -174,6 +181,15 @@ const boxContents: Record<number, { heading: string; subHead: string; content: s
       "Ready to explore something special?"
     ]
   }
+  ,
+  8: {
+    heading: "Whatsapp",
+    subHead: "Oct 31 2025",
+    content: [
+      "1st whatsapp text",
+      "time : 1:29 PM"
+    ]
+  }
 };
 
 function App() {
@@ -227,7 +243,8 @@ function App() {
       4: '21-02',
       5: 'holy',
       6: 'idcs',
-      7: '6095'
+      7: '6095',
+      8: '1111'
     };
     // Simulate loading for better UX
     setTimeout(() => {
@@ -322,6 +339,13 @@ function App() {
       title: 'Chapter 7: Something',
       date: '',
       hint: 'house number'
+    }
+    ,
+    {
+      id: 8,
+      title: 'Chapter 8: Whatsapp',
+      date: 'Oct 31 2025',
+      hint: 'hope number'
     }
   ];
 
@@ -452,6 +476,10 @@ function App() {
 
   if (currentPage === 'something') {
     return <Something currentTheme={currentTheme} onBack={() => setCurrentPage('timeline')} />;
+  }
+
+  if (currentPage === 'wp-funs') {
+    return <WpFuns currentTheme={currentTheme} onBack={() => setCurrentPage('timeline')} />;
   }
 
   // Default return for timeline page
@@ -688,12 +716,12 @@ function App() {
                   onClick={() => {
                     closeContentModal();
                     setTimeout(() => {
-                      setCurrentPage('something');
+                      setCurrentPage('wp-funs');
                     }, 100);
                   }}
                   className={`bg-gradient-to-r ${theme.buttonGradient} text-white py-3 px-6 rounded-lg font-semibold transition-all duration-200 shadow-lg mr-4 hover:shadow-xl hover:scale-105`}
                 >
-                  EXPLORE SOMETHING
+                  WP FUNS
                 </button>
               </div>
             )}
