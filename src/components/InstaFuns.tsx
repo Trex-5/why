@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, User, MessageCircle, MoreHorizontal, Instagram } from 'lucide-react';
+import { ArrowLeft, User, MessageCircle, MoreHorizontal, Instagram, Menu, X } from 'lucide-react';
 
 type Theme = 'blue' | 'pink' | 'green';
 
@@ -108,6 +108,7 @@ interface InstaFunsProps {
 
 const InstaFuns: React.FC<InstaFunsProps> = ({ currentTheme, onBack }) => {
   const [selectedSection, setSelectedSection] = useState<string>('Display picture');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const theme = themes[currentTheme];
 
   const sidebarOptions = [
@@ -130,9 +131,9 @@ const InstaFuns: React.FC<InstaFunsProps> = ({ currentTheme, onBack }) => {
       case 'Display picture':
         return (
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-white mb-4">Display Picture Analysis</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Display Picture Analysis</h2>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <p className="text-white/90 text-lg leading-relaxed">
+              <p className="text-white/90 text-base md:text-lg leading-relaxed">
                 Facing Wall - (black/white saturated image)
               </p>
             </div>
@@ -196,7 +197,7 @@ const InstaFuns: React.FC<InstaFunsProps> = ({ currentTheme, onBack }) => {
       case 'Bio':
         return (
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-white mb-4">Bio Information</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Bio Information</h2>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
               <ul className="space-y-2 text-white/80">
                 <li>• Bio 1: STASH, (some word), + sentence, just us: friend ID</li>
@@ -229,18 +230,18 @@ const InstaFuns: React.FC<InstaFunsProps> = ({ currentTheme, onBack }) => {
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-white mb-4">Other Findings</h2>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <h2 className="text-3xl font-bold text-white mb-4">1. Story Highlight</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">1. Story Highlight</h2>
               <p className="text-white/90 text-lg leading-relaxed">• Hometown friend (Maddy [story highlight]): Function dance image (pink/green)
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <h2 className="text-3xl font-bold text-white mb-4">2. Own Story Highlight</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">2. Own Story Highlight</h2>
               <p className="text-white/90 text-lg leading-relaxed">• Found by: Mutual of sister's ID</p>
               <p className="text-white/90 text-lg leading-relaxed">• Lead : Got a school lead</p>
               <p className="text-white/90 text-lg leading-relaxed">• Somehow Sis remove follow :(</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <h2 className="text-3xl font-bold text-white mb-4">3. Images/Videos</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">3. Images/Videos</h2>
               <p className="text-white/90 text-lg leading-relaxed">From mutual friends’ stories
               </p>
             </div>
@@ -252,9 +253,29 @@ const InstaFuns: React.FC<InstaFunsProps> = ({ currentTheme, onBack }) => {
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${theme.backgroundGradient} flex`}>
-      {/* Sidebar */}
-      <div className="w-80 bg-black/20 backdrop-blur-sm border-r border-white/10 p-6">
+    <div className={`min-h-screen bg-gradient-to-br ${theme.backgroundGradient} flex flex-col md:flex-row`}>
+      {/* Mobile header */}
+      <div className="w-full md:hidden px-4 py-4 border-b border-white/10 bg-black/10 backdrop-blur-sm">
+        <div className="mx-auto max-w-5xl flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className={`w-9 h-9 bg-gradient-to-br ${theme.primary} rounded-full flex items-center justify-center`}>
+              <Instagram className="w-5 h-5 text-white" />
+            </div>
+            <h1 className="text-lg font-semibold text-white">Instagram Funs</h1>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsSidebarOpen(true)}
+              aria-label="Open menu"
+              className="p-2 rounded-lg text-white/90 hover:text-white hover:bg-white/5"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* Sidebar (desktop) */}
+      <div className="hidden md:block w-80 bg-black/20 backdrop-blur-sm border-r border-white/10 p-6">
         <div className="mb-8">
           <div className="flex items-center space-x-3 mb-6">
             <div className={`w-12 h-12 bg-gradient-to-br ${theme.primary} rounded-full flex items-center justify-center`}>
@@ -291,9 +312,57 @@ const InstaFuns: React.FC<InstaFunsProps> = ({ currentTheme, onBack }) => {
         </nav>
       </div>
 
+      {/* Sidebar drawer (mobile) */}
+      {isSidebarOpen && (
+        <div className="fixed inset-0 z-50 flex md:hidden">
+          <div className="w-72 bg-black/95 backdrop-blur-sm p-5 border-r border-white/10 overflow-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className={`w-10 h-10 bg-gradient-to-br ${theme.primary} rounded-full flex items-center justify-center`}>
+                  <Instagram className="w-5 h-5 text-white" />
+                </div>
+                <h2 className="text-lg font-semibold text-white">Instagram</h2>
+              </div>
+              <button onClick={() => setIsSidebarOpen(false)} aria-label="Close" className="p-2 rounded-lg text-white/90 hover:bg-white/5">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <nav className="space-y-2">
+              {sidebarOptions.map((option) => {
+                const Icon = option.icon;
+                const isSelected = selectedSection === option.label && option.label !== 'Back';
+                const isBack = option.label === 'Back';
+
+                return (
+                  <button
+                    key={option.id}
+                    onClick={() => {
+                      handleSidebarClick(option.label);
+                      setIsSidebarOpen(false);
+                    }}
+                    className={`w-full flex items-center space-x-3 px-3 py-3 rounded-xl transition-all duration-150 text-left ${
+                      isSelected
+                        ? `bg-gradient-to-r ${theme.primary} text-white shadow-md`
+                        : isBack
+                        ? 'text-white/70 hover:text-white hover:bg-white/5'
+                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="font-medium text-sm">{option.label}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+          <div className="flex-1" onClick={() => setIsSidebarOpen(false)} />
+        </div>
+      )}
+
       {/* Main Content */}
-      <div className="flex-1 p-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="flex-1 p-4 sm:p-6 lg:p-8">
+        <div className="max-w-full sm:max-w-3xl md:max-w-4xl mx-auto">
           {renderContent()}
         </div>
       </div>

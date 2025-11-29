@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, User, MessageSquare, ImageIcon } from 'lucide-react';
+import { ArrowLeft, User, MessageSquare, ImageIcon, Menu, X } from 'lucide-react';
 
 type Theme = 'blue' | 'pink' | 'green';
 
@@ -66,6 +66,7 @@ interface WpFunsProps {
 
 const WpFuns: React.FC<WpFunsProps> = ({ currentTheme, onBack }) => {
   const [selectedSection, setSelectedSection] = useState<string>('Display picture');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const theme = themes[currentTheme];
 
   const sidebarOptions = [
@@ -88,10 +89,10 @@ const WpFuns: React.FC<WpFunsProps> = ({ currentTheme, onBack }) => {
       case 'Display picture':
         return (
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-white mb-4">WhatsApp Display Pictures</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">WhatsApp Display Pictures</h2>
             <div className="space-y-4">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <p className="text-white/90 text-lg leading-relaxed">1. temple - dark blue/sandle 1st saw Oct 30 2025</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/20">
+                <p className="text-white/90 text-base md:text-lg leading-relaxed">1. temple - dark blue/sandle 1st saw Oct 30 2025</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                 <p className="text-white/90 text-lg leading-relaxed">2. KRCT ampetheater - silver/pink - Oct 5</p>
@@ -114,9 +115,9 @@ const WpFuns: React.FC<WpFunsProps> = ({ currentTheme, onBack }) => {
       case 'Bio':
         return (
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-white mb-4">WhatsApp Bio</h2>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <p className="text-white/90 text-lg leading-relaxed">Hope~11:11</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">WhatsApp Bio</h2>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/20">
+              <p className="text-white/90 text-base md:text-lg leading-relaxed">Hope~11:11</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
               <p className="text-white/90 text-lg leading-relaxed">Whatsapp Bio: It's just a spark</p>
@@ -126,12 +127,16 @@ const WpFuns: React.FC<WpFunsProps> = ({ currentTheme, onBack }) => {
       case 'Status':
         return (
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-white mb-4">WhatsApp Status</h2>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">WhatsApp Status</h2>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/20">
               <ul className="space-y-2 text-white/80">
-                <li>• 12/10/25 - Party pictures</li>
-                <li>• 05/09/25 - Travel story</li>
-                <li>• 31/08/25 - Study group</li>
+                <li>1st - 11/11 - time 11:11 - temple edit, i saw on 12/11</li>
+                <p>6 frames, rotate, steps, straight rotate, gate, wall front walk, wall back walk</p>
+              </ul>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/20">
+              <ul className="space-y-2 text-white/80">
+                <li>2nd - 23/11/25 - with little boy</li>
               </ul>
             </div>
           </div>
@@ -142,9 +147,29 @@ const WpFuns: React.FC<WpFunsProps> = ({ currentTheme, onBack }) => {
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${theme.backgroundGradient} flex`}>
-      {/* Sidebar */}
-      <div className="w-80 bg-black/20 backdrop-blur-sm border-r border-white/10 p-6">
+    <div className={`min-h-screen bg-gradient-to-br ${theme.backgroundGradient} flex flex-col md:flex-row`}>
+      {/* Mobile header */}
+      <div className="w-full md:hidden px-4 py-4 border-b border-white/10 bg-black/10 backdrop-blur-sm">
+        <div className="mx-auto max-w-5xl flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className={`w-9 h-9 bg-gradient-to-br ${theme.primary} rounded-full flex items-center justify-center`}>
+              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" /></svg>
+            </div>
+            <h1 className="text-lg font-semibold text-white">WP Funs</h1>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsSidebarOpen(true)}
+              aria-label="Open menu"
+              className="p-2 rounded-lg text-white/90 hover:text-white hover:bg-white/5"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* Sidebar (desktop) */}
+      <div className="hidden md:block w-80 bg-black/20 backdrop-blur-sm border-r border-white/10 p-6">
         <div className="mb-8">
           <div className="flex items-center space-x-3 mb-6">
             <div className={`w-12 h-12 bg-gradient-to-br ${theme.primary} rounded-full flex items-center justify-center`}>
@@ -181,9 +206,57 @@ const WpFuns: React.FC<WpFunsProps> = ({ currentTheme, onBack }) => {
         </nav>
       </div>
 
+      {/* Sidebar drawer (mobile) */}
+      {isSidebarOpen && (
+        <div className="fixed inset-0 z-50 flex md:hidden">
+          <div className="w-72 bg-black/95 backdrop-blur-sm p-5 border-r border-white/10 overflow-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className={`w-10 h-10 bg-gradient-to-br ${theme.primary} rounded-full flex items-center justify-center`}>
+                  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" /></svg>
+                </div>
+                <h2 className="text-lg font-semibold text-white">WP Funs</h2>
+              </div>
+              <button onClick={() => setIsSidebarOpen(false)} aria-label="Close" className="p-2 rounded-lg text-white/90 hover:bg-white/5">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <nav className="space-y-2">
+              {sidebarOptions.map((option) => {
+                const Icon = option.icon as any;
+                const isSelected = selectedSection === option.label && option.label !== 'Back';
+                const isBack = option.label === 'Back';
+
+                return (
+                  <button
+                    key={option.id}
+                    onClick={() => {
+                      handleSidebarClick(option.label);
+                      setIsSidebarOpen(false);
+                    }}
+                    className={`w-full flex items-center space-x-3 px-3 py-3 rounded-xl transition-all duration-150 text-left ${
+                      isSelected
+                        ? `bg-gradient-to-r ${theme.primary} text-white shadow-md`
+                        : isBack
+                        ? 'text-white/70 hover:text-white hover:bg-white/5'
+                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="font-medium text-sm">{option.label}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+          <div className="flex-1" onClick={() => setIsSidebarOpen(false)} />
+        </div>
+      )}
+
       {/* Main Content */}
-      <div className="flex-1 p-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="flex-1 p-4 sm:p-6 lg:p-8">
+        <div className="max-w-full sm:max-w-2xl md:max-w-4xl mx-auto">
           {renderContent()}
         </div>
       </div>

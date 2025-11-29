@@ -129,7 +129,8 @@ const SchoolFuns: React.FC<SchoolFunsProps> = ({ currentTheme, onBack }) => {
       content: 'Got an award for 3rd rank',
       hasLink: true,
       linkText: 'Watch on YouTube',
-      linkUrl: 'https://www.youtube.com/watch?v=yiD5Dm_XFYo'
+      // start at 56:20 = 3380 seconds
+      linkUrl: 'https://www.youtube.com/watch?v=yiD5Dm_XFYo&t=3380s'
     },
     {
       id: 4,
@@ -193,7 +194,7 @@ const SchoolFuns: React.FC<SchoolFunsProps> = ({ currentTheme, onBack }) => {
                           className="inline-flex items-center space-x-2 bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-lg"
                         >
                           <Youtube className="w-4 h-4" />
-                          <span>{box.linkText}</span>
+                          <span>{box.linkText} (56:20)</span>
                         </a>
                       </div>
                     )}

@@ -121,7 +121,7 @@ const themes: Record<Theme, ThemeConfig> = {
 const boxContents: Record<number, { heading: string; subHead: string; content: string[] }> = {
   1: {
     heading: "PT 1 ~ 1st Sight",
-    subHead: "1st convo - Exam hall seating",
+    subHead: "1st convo - Exam hall seating Oct 19 2023",
     content: [
       "It's not your place. Someone else should come here.",
       "Dress - Blue/White.",
@@ -131,11 +131,12 @@ const boxContents: Record<number, { heading: string; subHead: string; content: s
   },
   2: {
     heading: "Mobile Number",
-    subHead: "Students record - Shared by HOD",
+    subHead: "Students record - Shared by 1st yr HOD",
     content: [
-      "Help: Students record - Shared by HOD",
+      "Help: Students record - Shared by 1st yr HOD",
       "Lead 2: Lead to Instagram",
-      "Whatsapp Bio: It's just a spark",
+      "Whatsapp Bio: It's just a spark" , 
+      "Found on : common linkedin group by 1st yr",
       "Bio2: Hope~11:11",
       "1st Call : Oct 24 / 13 sec"
     ]
@@ -152,7 +153,7 @@ const boxContents: Record<number, { heading: string; subHead: string; content: s
     heading: "Hometown",
     subHead: "Kalaiyar Koil",
     content: [
-      "Help: CAMU records entering site, Roll no",
+      "Help: on 1st yr, CAMU records entering site, Roll no",
       "Scenario: Got CAMU details entering site login, By roll no got details",
       "Lead 3: Birthday",
       "Lead 4: Hometown"
@@ -500,13 +501,17 @@ function App() {
 
         <div className="max-w-4xl mx-auto">
           {boxes.map((box, index) => {
+            // If this is the Whatsapp box (id 8) use the selected theme's first box color
+            // so it will be blue for blue theme, pink for pink theme, green for green theme
+            const boxGradient = box.id === 8 ? themes[currentTheme].boxColors[0] : theme.boxColors[index];
+            const boxHover = box.id === 8 ? themes[currentTheme].boxHoverColors[0] : theme.boxHoverColors[index];
             return (
               <div key={box.id} className="relative mb-12 last:mb-0">
                 {/* Timeline line */}
                 <div className="absolute left-8 top-16 bottom-0 w-0.5 bg-white/20 last:hidden"></div>
                 
                 {/* Timeline dot */}
-                <div className={`absolute left-6 top-8 w-4 h-4 bg-gradient-to-br ${theme.boxColors[index]} rounded-full border-4 border-white/20 shadow-lg`}></div>
+                <div className={`absolute left-6 top-8 w-4 h-4 bg-gradient-to-br ${boxGradient} rounded-full border-4 border-white/20 shadow-lg`}></div>
                 
                 {/* Content */}
                 <div className="ml-20">
@@ -514,7 +519,7 @@ function App() {
                     onClick={() => handleBoxClick(box.id)}
                     className="group cursor-pointer transform transition-all duration-300 hover:scale-[1.02]"
                   >
-                    <div className={`bg-gradient-to-br ${theme.boxColors[index]} ${theme.boxHoverColors[index]} p-8 rounded-2xl shadow-2xl border border-white/10 relative overflow-hidden`}>
+                    <div className={`bg-gradient-to-br ${boxGradient} ${boxHover} p-8 rounded-2xl shadow-2xl border border-white/10 relative overflow-hidden`}>
                       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       
                       <div className="relative z-10">
@@ -700,12 +705,12 @@ function App() {
                   onClick={() => {
                     closeContentModal();
                     setTimeout(() => {
-                      setCurrentPage('whatsapp');
+                      setCurrentPage('something');
                     }, 100);
                   }}
                   className={`bg-gradient-to-r ${theme.buttonGradient} text-white py-3 px-6 rounded-lg font-semibold transition-all duration-200 shadow-lg mr-4 hover:shadow-xl hover:scale-105`}
                 >
-                  VIEW WHATSAPP
+                  VIEW SOMETHING
                 </button>
               </div>
             )}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Heart, Eye, Calendar, Clock, Shirt, MoreHorizontal, Sparkles, X } from 'lucide-react';
+import { ArrowLeft, Heart, Eye, Calendar, Clock, Shirt, MoreHorizontal, Sparkles, X, Menu } from 'lucide-react';
 
 type Theme = 'blue' | 'pink' | 'green';
 
@@ -122,6 +122,7 @@ interface SomethingProps {
 const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
   const [selectedSection, setSelectedSection] = useState<string>('DAY 1');
   const [selectedSubBox, setSelectedSubBox] = useState<SubBox | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const theme = themes[currentTheme];
 
   const sidebarOptions = [
@@ -237,7 +238,7 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         id: 'sem-time-2',
         title: 'Sem Time 2',
         heading: 'Sem 3 - last day',
-        content: ['Brown dresss, i did not saw on this day also, while waiting for bus search on ground and roads bus also started, when bus turn the road a 1 second seen - found you on the road']
+        content: ['Brown dresss, i did not saw on this day also, while waiting for bus search on ground and roads bus also started, when bus turn the road a 1 second seen - found you on the road, walking to toll with friend']
       },
       {
         id: 'sem-time-3',
@@ -257,7 +258,7 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         id: 'no-look-1',
         title: 'No Look 1',
         heading: 'Sem 1 - Blue Dress',
-        content: ['i was try to dont look but accidentally saw in a blue dress']
+        content: ['1st yr , i was try to dont look but accidentally saw in a blue dress']
       },
       {
         id: 'no-look-2',
@@ -276,6 +277,30 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         title: 'No Look 4',
         heading: 'Sem 5',
         content: ['Cant cross the days when crossing the class, windows, infront']
+      },
+      {
+        id: 'no-look-5',
+        title: 'No Look 5',
+        heading: 'Sem 4',
+        content: ['A long streak, but just broke on 4/6/25, sem 4 last sem lab, in a green dress on the way to hostel, that last turn just broke it']
+      },
+      {
+        id: 'no-look-6',
+        title: 'No Look 6',
+        heading: 'Sem 5',
+        content: ['A one day no look']
+      },
+      {
+        id: 'no-look-7',
+        title: 'No Look 7',
+        heading: 'Sem 5',
+        content: ['A one day no look on cycle 2, cuz the day before day you didnt saw me']
+      },
+      {
+        id: 'no-look-8',
+        title: 'No Look 8',
+        heading: 'Sem 5',
+        content: ['started before model exam']
       }
     ],
     'DRESS': [
@@ -324,7 +349,7 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
       {
         id: 'dress-8',
         title: 'Dress 8',
-        heading: 'Light green with white leaf',
+        heading: 'White with Light green leaf',
         content: ['Festronix, A frinds outing highlight on insta']
       },
       {
@@ -378,14 +403,14 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
       {
         id: 'dress-17',
         title: 'Dress 17',
-        heading: 'lite baby Pink',
+        heading: 'lite Pink',
         content: ['No specific action, sometimes']
       },
       {
         id: 'dress-18',
         title: 'Dress 18',
         heading: 'silver top/pink',
-        content: ['sometimes/club inaugural']
+        content: ['sometimes/club inaugural, dp']
       },
       {
         id: 'dress-19',
@@ -397,13 +422,13 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         id: 'dress-20',
         title: 'Dress 20',
         heading: 'Pink/white shawl',
-        content: ['I didnt see on that even on the same room, it was a no look day']
+        content: ['I didnt see on that day even on the same room, it was a no look day']
       },
       {
         id: 'dress-21',
         title: 'Dress 21',
         heading: 'Sandle White',
-        content: ['No specific action, sometimes']
+        content: ['sem 5 cycle 2  no look day, 24/11/25 last day of AWS class for me']
       },
       {
         id: 'dress-22',
@@ -451,7 +476,7 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         id: 'dress-29',
         title: 'Dress 29',
         heading: 'light yellowish',
-        content: ['second genAI lab']
+        content: ['sem 5 cycle 1 second genAI lab']
       },
       {
         id: 'dress-30',
@@ -462,14 +487,14 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
       {
         id: 'dress-31',
         title: 'Dress 31',
-        heading: 'lite yellowish',
-        content: ['Elective lab/SEM 5']
+        heading: 'sandle/dark blue',
+        content: ['wp dp, wp status']
       },
       {
         id: 'dress-32',
         title: 'Dress 32',
         heading: 'lite marron with white dots',
-        content: ['After Diwali 2']
+        content: ['After Diwali 2, pondi']
       },
       {
         id: 'dress-33',
@@ -492,20 +517,56 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
       {
         id: 'dress-36',
         title: 'Dress 36',
-        heading: 'white/black/patterns',
+        heading: 'white/dark blue/patterns',
         content: ['Your club canvas, sometimes']
       },
       {
         id: 'dress-37',
         title: 'Dress 37',
-        heading: 'white/black small rectangle boxes',
+        heading: 'light green, black shawl - sem 5 no look day before model, club workshop event',
         content: ['project day, sometimes']
       },
       {
         id: 'dress-38',
         title: 'Dress 38',
-        heading: 'linnk pink/sandle',
-        content: ['after diwali 2 day 2']
+        heading: 'lite pink/sandle',
+        content: ['after diwali 2, day 2']
+      },
+      {
+        id: 'dress-39',
+        title: 'Dress 39',
+        heading: 'lite blue/black trouser',
+        content: ['kho kho game in college']
+      },
+      {
+        id: 'dress-40',
+        title: 'Dress 40',
+        heading: 'lite green T shirt',
+        content: ['status 2 on wp']
+      },
+      {
+        id: 'dress-41',
+        title: 'Dress 41',
+        heading: 'white full hand shirt',
+        content: ['insta mirror , holding mobile DP']
+      },
+      {
+        id: 'dress-42',
+        title: 'Dress 42',
+        heading: 'red T shirt',
+        content: ['a birthday story, cycling on street']
+      },
+      {
+        id: 'dress-43',
+        title: 'Dress 43',
+        heading: 'green/pink',
+        content: ['hometown dance']
+      },
+      {
+        id: 'dress-44',
+        title: 'Dress 44',
+        heading: 'brown saree',
+        content: ['birthday story']
       },
       {
         id: 'dress',
@@ -525,8 +586,8 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
       {
         id: 'wifi_name',
         title: 'Wifi',
-        heading: 'Wifi Name',
-        content: ['Wifi name', '04/06/25 - SEM 4 - 9:31 AM when trying to connect a wifi']
+        heading: 'Wifi Name - your name',
+        content: ['Wifi name', '04/06/25 - SEM 4 - 9:31 AM when trying to connect a wifi, second name - *Wi~fi*']
       },
       {
         id: 'aadhar',
@@ -552,6 +613,13 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         heading: 'Home Town',
         content: ['6095, krishna nagar, kallal road, kalaiyar kovil, sivaganga']
       }
+      ,
+      {
+        id: 'touch',
+        title: 'Touch',
+        heading: 'Touch',
+        content: ['21/11/25 - 12:40 accidental while get the lap']
+      }
     ]
   };
 
@@ -576,16 +644,16 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
     
     return (
       <div className="space-y-6">
-        <h2 className="text-3xl font-bold text-white mb-6">{selectedSection}</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">{selectedSection}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentSubBoxes.map((subBox, index) => (
             <div
               key={subBox.id}
               onClick={() => handleSubBoxClick(subBox)}
-              className={`bg-gradient-to-br ${theme.boxColors[index % theme.boxColors.length]} p-6 rounded-xl shadow-lg border border-white/10 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group`}
+              className={`bg-gradient-to-br ${theme.boxColors[index % theme.boxColors.length]} p-4 md:p-6 rounded-xl shadow-lg border border-white/10 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group`}
             >
               <div className="relative">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white/90 transition-colors">
+                <h3 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-white/90 transition-colors">
                   {subBox.title}
                 </h3>
                 <p className="text-white/80 text-sm leading-relaxed">
@@ -603,9 +671,29 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${theme.backgroundGradient} flex`}>
-      {/* Sidebar */}
-      <div className="w-80 bg-black/20 backdrop-blur-sm border-r border-white/10 p-6">
+    <div className={`min-h-screen bg-gradient-to-br ${theme.backgroundGradient} flex flex-col md:flex-row`}>
+      {/* Mobile header */}
+      <div className="w-full md:hidden px-4 py-4 border-b border-white/10 bg-black/10 backdrop-blur-sm">
+        <div className="mx-auto max-w-5xl flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className={`w-9 h-9 bg-gradient-to-br ${theme.primary} rounded-full flex items-center justify-center`}>
+              <Sparkles className="w-5 h-5 text-white" />
+            </div>
+            <h1 className="text-lg font-semibold text-white">Something Special</h1>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsSidebarOpen(true)}
+              aria-label="Open menu"
+              className="p-2 rounded-lg text-white/90 hover:text-white hover:bg-white/5"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* Sidebar (desktop) */}
+      <div className="hidden md:block w-80 bg-black/20 backdrop-blur-sm border-r border-white/10 p-6">
         <div className="mb-8">
           <div className="flex items-center space-x-3 mb-6">
             <div className={`w-12 h-12 bg-gradient-to-br ${theme.primary} rounded-full flex items-center justify-center`}>
@@ -642,9 +730,57 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
         </nav>
       </div>
 
+      {/* Sidebar drawer (mobile) */}
+      {isSidebarOpen && (
+        <div className="fixed inset-0 z-50 flex md:hidden">
+          <div className="w-72 bg-black/95 backdrop-blur-sm p-5 border-r border-white/10 overflow-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className={`w-10 h-10 bg-gradient-to-br ${theme.primary} rounded-full flex items-center justify-center`}>
+                  <Sparkles className="w-5 h-5 text-white" />
+                </div>
+                <h2 className="text-lg font-semibold text-white">Something</h2>
+              </div>
+              <button onClick={() => setIsSidebarOpen(false)} aria-label="Close" className="p-2 rounded-lg text-white/90 hover:bg-white/5">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <nav className="space-y-2">
+              {sidebarOptions.map((option) => {
+                const Icon = option.icon;
+                const isSelected = selectedSection === option.label && option.label !== 'Back';
+                const isBack = option.label === 'Back';
+
+                return (
+                  <button
+                    key={option.id}
+                    onClick={() => {
+                      handleSidebarClick(option.label);
+                      setIsSidebarOpen(false);
+                    }}
+                    className={`w-full flex items-center space-x-3 px-3 py-3 rounded-xl transition-all duration-150 text-left ${
+                      isSelected
+                        ? `bg-gradient-to-r ${theme.primary} text-white shadow-md`
+                        : isBack
+                        ? 'text-white/70 hover:text-white hover:bg-white/5'
+                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="font-medium text-sm">{option.label}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+          <div className="flex-1" onClick={() => setIsSidebarOpen(false)} />
+        </div>
+      )}
+
       {/* Main Content */}
-      <div className="flex-1 p-8">
-        <div className="max-w-6xl mx-auto">
+      <div className="flex-1 p-4 sm:p-6 lg:p-8">
+        <div className="max-w-full sm:max-w-3xl md:max-w-6xl mx-auto">
           {renderContent()}
         </div>
       </div>
@@ -652,10 +788,10 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
       {/* Popup Modal */}
       {selectedSubBox && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/20 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+          <div className="bg-white/95 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-white/20 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
             <div className="flex justify-between items-start mb-6">
               <div>
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
                   {selectedSubBox.heading}
                 </h2>
                 <h3 className="text-lg text-gray-600">
@@ -674,7 +810,7 @@ const Something: React.FC<SomethingProps> = ({ currentTheme, onBack }) => {
 
             <div className="space-y-4">
               {selectedSubBox.content.map((line, index) => (
-                <p key={index} className="text-gray-700 leading-relaxed text-lg">
+                <p key={index} className="text-gray-700 leading-relaxed text-base md:text-lg">
                   {line}
                 </p>
               ))}
